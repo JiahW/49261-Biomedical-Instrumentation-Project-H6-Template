@@ -91,6 +91,6 @@ Once you have done the above, type the following to run the template.
 react-native run-ios
 ```
 
-If you have any question please create a new issue in this repository or [email me] (mailto:xu.lian@uts.edu.au) and I will reply as soon as possible.
+If you have any question please create a new issue in this repository or [email me](mailto:xu.lian@uts.edu.au) and I will reply as soon as possible.
 
 Happy Coding :heart:
