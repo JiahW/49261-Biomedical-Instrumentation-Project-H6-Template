@@ -4,29 +4,47 @@
  * @author Xu Lian (xu.lian@uts.edu.au)
  */
 
-import React, {Component} from 'react';
-import {StyleSheet, View, StatusBar, NavigatorIOS, TabBarIOS} from 'react-native';
-import WelcomeView from './WelcomeView';
-import MonitorView from './MonitorView';
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import Icon from 'react-native-vector-icons/dist/FontAwesome5';
+import { createBottomTabNavigator } from 'react-navigation';
+import WelcomeStack from './WelcomeView';
+import MonitorStack from './MonitorView';
+import ParentStack from './ParentStack';
+
+const AppNavigator = createBottomTabNavigator(
+  {
+    Welcome: WelcomeStack,
+    Monitor: MonitorStack,
+    Parent: ParentStack
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        switch (routeName) {
+          case 'Welcome':
+            iconName = 'hand-spock';
+            break;
+          case 'Monitor':
+            iconName = 'heart';
+            break;
+          case 'Parent':
+            iconName = 'paper-plane';
+            break;
+          default:
+        }
+        return <Icon name={iconName} size={24} color={tintColor}/>;
+      }
+    })
+  }
+);
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedView: 'welcome'
-    };
-  }
-
   render() {
     return (
-      <TabBarIOS>
-        <TabBarIOS.Item title='Welcome' selected={this.state.selectedView == 'welcome'} onPress={() => {this.setState({selectedView: 'welcome'})}}>
-          <NavigatorIOS style={styles.container} initialRoute={{component: WelcomeView, title: 'Welcome'}}/>
-        </TabBarIOS.Item>
-        <TabBarIOS.Item title='Monitor' selected={this.state.selectedView == 'monitor'} onPress={() => {this.setState({selectedView: 'monitor'})}}>
-          <NavigatorIOS style={styles.container} initialRoute={{component: MonitorView, title: 'Monitor'}}/>
-        </TabBarIOS.Item>
-      </TabBarIOS>
+      <AppNavigator ref={navigator => {this.navigator = navigator}}/>
     );
   }
 }

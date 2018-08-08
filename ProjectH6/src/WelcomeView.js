@@ -5,7 +5,8 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, View, Image, Text} from 'react-native';
+import {createStackNavigator} from 'react-navigation';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -14,12 +15,15 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-type State = {};
-export default class WelcomeView extends Component<Props, State> {
+class WelcomeView extends Component {
+  static navigationOptions = {
+    title: 'Welcome'
+  };
+
   render() {
     return (
       <View style={styles.container}>
+        <Image style={{width: 50, height: 50}} source={require('./img/react-logo.png')}></Image>
         <Text style={styles.welcome}>Welcome to Project H6 App Template!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
@@ -46,3 +50,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+let WelcomeStack = createStackNavigator({WelcomeView});
+WelcomeStack.navigationOptions = {tabBarLabel: 'Welcome'};
+
+export default WelcomeStack;

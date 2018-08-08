@@ -6,13 +6,18 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, SafeAreaView, View, Text} from 'react-native';
-import { Defs, LinearGradient, Stop } from 'react-native-svg';
+import {Defs, LinearGradient, Stop} from 'react-native-svg';
 import * as shape from 'd3-shape';
-import { LineChart, Grid } from 'react-native-svg-charts';
+import {LineChart, Grid} from 'react-native-svg-charts';
+import {createStackNavigator} from 'react-navigation';
 
-export default class MonitorView extends Component {
+class MonitorView extends Component {
+  static navigationOptions = {
+    title: 'Monitor',
+  };
+
   render() {
-    const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ];
+    const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80];
     const Gradient = () => (
       <Defs key={'gradient'}>
         <LinearGradient id={'gradient'} x1={'0'} y={'0%'} x2={'100%'} y2={'0%'}>
@@ -43,3 +48,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
 });
+
+let MonitorStack = createStackNavigator({MonitorView});
+MonitorStack.navigationOptions = {tabBarLabel: 'Monitor'};
+
+export default MonitorStack;
