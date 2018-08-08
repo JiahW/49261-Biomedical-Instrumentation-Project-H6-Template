@@ -84,12 +84,22 @@ cd ProjectH6
 npm install -g react-native-cli
 npm install
 react-native link react-native-svg
+react-native link react-native-vector-icons
+react-native link react-navigation
 ```
 
 Once you have done the above, type the following to run the template.
 
+For iOS
+
 ```
 react-native run-ios
+```
+
+For Android
+
+```
+react-native run-android
 ```
 
 Open a new Terminal window and repeat step 6. Once you are in the workspace, type the followngs to start Metro Bundler.
