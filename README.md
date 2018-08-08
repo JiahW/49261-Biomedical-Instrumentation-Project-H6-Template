@@ -83,12 +83,19 @@ cd ~/workspace
 cd ProjectH6
 npm install -g react-native-cli
 npm install
+react-native link react-native-svg
 ```
 
 Once you have done the above, type the following to run the template.
 
 ```
 react-native run-ios
+```
+
+Open a new Terminal window and repeat step 6. Once you are in the workspace, type the followngs to start Metro Bundler.
+```
+cd ProjectH6
+node_modules/react-native/scripts/packager.sh
 ```
 
 If you have any question please create a new issue in this repository or [email me](mailto:xu.lian@uts.edu.au) and I will reply as soon as possible.
