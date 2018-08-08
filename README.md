@@ -93,6 +93,7 @@ react-native run-ios
 ```
 
 Open a new Terminal window and repeat step 6. Once you are in the workspace, type the followngs to start Metro Bundler.
+
 ```
 cd ProjectH6
 node_modules/react-native/scripts/packager.sh
