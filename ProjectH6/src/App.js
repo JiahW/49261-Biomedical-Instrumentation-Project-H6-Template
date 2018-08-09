@@ -4,15 +4,21 @@
  * @author Xu Lian (xu.lian@uts.edu.au)
  */
 
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, {Component} from 'react';
+import {Platform, StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
-import { createBottomTabNavigator } from 'react-navigation';
-import WelcomeStack from './WelcomeView';
-import MonitorStack from './MonitorView';
+import {createDrawerNavigator, createBottomTabNavigator} from 'react-navigation';
+import WelcomeStack from './WelcomeStack';
+import MonitorStack from './MonitorStack';
 import ParentStack from './ParentStack';
 
-const AppNavigator = createBottomTabNavigator(
+const AppNavigator = Platform.OS === 'android' ? createDrawerNavigator(
+  {
+    Welcome: WelcomeStack,
+    Monitor: MonitorStack,
+    Parent: ParentStack
+  }
+) : createBottomTabNavigator(
   {
     Welcome: WelcomeStack,
     Monitor: MonitorStack,

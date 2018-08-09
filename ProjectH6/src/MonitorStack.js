@@ -8,19 +8,17 @@ import {Platform} from 'react-native';
 import {createStackNavigator, HeaderBackButton} from 'react-navigation';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 import MaterialIcon from 'react-native-vector-icons/dist/MaterialIcons';
-import ParentView from './ParentView';
-import ChildView from './ChildView';
+import MonitorView from './MonitorView';
 
-let ParentStack = Platform.OS === 'android' ? createStackNavigator(
+let MonitorStack = Platform.OS === 'android' ? createStackNavigator(
   {
-    Parent: ParentView,
-    Child: ChildView
+    Monitor: MonitorView
   },
   {
     navigationOptions: ({ navigation }) => ({
       headerLeft: () => {
         const { routeName } = navigation.state;
-        if (routeName == 'Parent') {
+        if (routeName == 'Monitor') {
           return <HeaderBackButton backImage={<MaterialIcon name={'menu'} size={24} color={'#000'} style={{margin: 3}}/>} onPress={() => navigation.toggleDrawer()}/>
         }
         return <HeaderBackButton onPress={() => navigation.goBack()}/>
@@ -29,13 +27,12 @@ let ParentStack = Platform.OS === 'android' ? createStackNavigator(
   }
 ) : createStackNavigator(
   {
-    Parent: ParentView,
-    Child: ChildView
+    Monitor: MonitorView
   }
 );
 if (Platform.OS === 'android') {
-  ParentStack.navigationOptions = {drawerLabel: 'Parent View', drawerIcon: ({ tintColor }) => (<Icon name={'paper-plane'} size={24} color={tintColor}/>)}
+  MonitorStack.navigationOptions = {drawerLabel: 'Monitor', drawerIcon: ({ tintColor }) => (<Icon name={'heart'} size={24} color={tintColor}/>)}
 } else {
-  ParentStack.navigationOptions = {tabBarLabel: 'Parent View'};
+  MonitorStack.navigationOptions = {tabBarLabel: 'Monitor'};
 }
-export default ParentStack;
+export default MonitorStack;

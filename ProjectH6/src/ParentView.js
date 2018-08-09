@@ -16,7 +16,7 @@ export default class ParentView extends Component {
     return (
       <View style={styles.container}>
         <Text style={{padding: 20}}>This is the Parent View. Tap on the button below to show the child view.</Text>
-        <Icon.Button name="caret-square-right" onPress={() => this.exposeChildView()}>
+        <Icon.Button name={'caret-square-right'} onPress={() => this.exposeChildView()}>
           <Text style={{color: '#FFFFFF'}}>Expose Child View</Text>
         </Icon.Button>
       </View>
