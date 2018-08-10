@@ -4,7 +4,7 @@
  * @author Xu Lian (xu.lian@uts.edu.au)
  */
 import React, {Component} from 'react';
-import {Platform, StyleSheet, View, StatusBar, ToolbarAndroid, Image, Text} from 'react-native';
+import {Platform, StyleSheet, View, Image, Text} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -26,7 +26,7 @@ export default class WelcomeView extends Component {
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
       </View>
-    );
+    )
   }
 }
 

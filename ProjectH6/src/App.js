@@ -9,18 +9,21 @@ import {Platform, StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 import {createDrawerNavigator, createBottomTabNavigator} from 'react-navigation';
 import WelcomeStack from './WelcomeStack';
+import OnboardSensorsStack from './OnboardSensorsStack';
 import MonitorStack from './MonitorStack';
 import ParentStack from './ParentStack';
 
 const AppNavigator = Platform.OS === 'android' ? createDrawerNavigator(
   {
     Welcome: WelcomeStack,
+    OnboardSensors: OnboardSensorsStack,
     Monitor: MonitorStack,
     Parent: ParentStack
   }
 ) : createBottomTabNavigator(
   {
     Welcome: WelcomeStack,
+    OnboardSensors: OnboardSensorsStack,
     Monitor: MonitorStack,
     Parent: ParentStack
   },
@@ -32,6 +35,9 @@ const AppNavigator = Platform.OS === 'android' ? createDrawerNavigator(
         switch (routeName) {
           case 'Welcome':
             iconName = 'hand-spock';
+            break;
+          case 'OnboardSensors':
+            iconName = 'compass';
             break;
           case 'Monitor':
             iconName = 'heart';
