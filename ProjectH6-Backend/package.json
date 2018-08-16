@@ -1,0 +1,19 @@
+{
+  "name": "projecth6-backend",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "cd web && npm run-script build && cd .. && node --experimental-modules index.mjs",
+    "clean": "rm -Rf public"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^3.1.3",
+    "react": "^16.4.2",
+    "react-dev-utils": "^5.0.1",
+    "react-dom": "^16.4.2",
+    "react-router-dom": "^4.3.1"
+  }
+}
