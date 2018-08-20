@@ -5,6 +5,9 @@
  */
 import express from 'express';
 import http from 'http';
+import CORS from 'cors';
+import CookieParser from 'cookie-parser';
+import BodyParser from 'body-parser';
 
 export default class Server {
   static get is() { return 'server' }
@@ -47,6 +50,10 @@ export default class Server {
 
   static listen() {
     this.express = express();
+    this.express.use(CORS({ origin: true, credentials: true }));
+    this.express.use(CookieParser('project-h6'));
+    this.express.use(BodyParser.json());
+    this.express.use(BodyParser.urlencoded({ extended: true }));
     this.express.disable('x-powered-by');
     for (let route in this.routes) {
       if (this.routes[route].static) {
@@ -55,39 +62,39 @@ export default class Server {
       }
       if (this.routes[route].get) {
         console.info(`${ this.is } route ${ route } method get`);
-        this.express.use(route, express.Router().get('', this.routes[route].get));
+        this.express.get(route, this.routes[route].get);
       }
       if (this.routes[route].head) {
         console.info(`${ this.is } route ${ route } method head`);
-        this.express.use(route, express.Router().head('/', this.routes[route].head));
+        this.express.head(route, this.routes[route].head);
       }
       if (this.routes[route].post) {
         console.info(`${ this.is } route ${ route } method post`);
-        this.express.use(route, express.Router().post('/', this.routes[route].post));
+        this.express.post(route, this.routes[route].post);
       }
       if (this.routes[route].put) {
         console.info(`${ this.is } route ${ route } method put`);
-        this.express.use(route, express.Router().put('/', this.routes[route].put));
+        this.express.put(route, this.routes[route].put);
       }
       if (this.routes[route].delete) {
         console.info(`${ this.is } route ${ route } method delete`);
-        this.express.use(route, express.Router().delete('/', this.routes[route].delete));
+        this.express.delete(route, this.routes[route].delete);
       }
       if (this.routes[route].connect) {
         console.info(`${ this.is } route ${ route } method connect`);
-        this.express.use(route, express.Router().connect('/', this.routes[route].connect));
+        this.express.connect(route, this.routes[route].connect);
       }
       if (this.routes[route].options) {
         console.info(`${ this.is } route ${ route } method options`);
-        this.express.use(route, express.Router().options('/', this.routes[route].options));
+        this.express.options(route, this.routes[route].options);
       }
       if (this.routes[route].trace) {
         console.info(`${ this.is } route ${ route } method trace`);
-        this.express.use(route, express.Router().trace('/', this.routes[route].trace));
+        this.express.trace(route, this.routes[route].trace);
       }
       if (this.routes[route].patch) {
         console.info(`${ this.is } route ${ route } method patch`);
-        this.express.use(route, express.Router().patch('/', this.routes[route].patch));
+        this.express.patch(route, this.routes[route].patch);
       }
     }
     this.express.set('port', this.port);

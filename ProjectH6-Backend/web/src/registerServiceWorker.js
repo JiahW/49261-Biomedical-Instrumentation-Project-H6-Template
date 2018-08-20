@@ -1,3 +1,8 @@
+/**
+ * Project H6 Backend Template
+ *
+ * @author Xu Lian (xu.lian@uts.edu.au)
+ */
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives

@@ -5,6 +5,8 @@
  */
 import path from 'path';
 import Backend from './src/backend';
+import config from './config.json';
 
+Backend.config = config;
 Backend.workingDirectory = path.resolve();
 Backend.start();

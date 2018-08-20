@@ -1,0 +1,39 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.layout-header {
+  background-color: #F8F8F8;
+}
+
+.breadcrumb-item {
+  line-height: 64px;
+}
+
+.layout-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 50px;
+  overflow-y: auto;
+}
+
+.layout-footer {
+  background-color: #001529F0;
+  color: #FFFFFF;
+}
+
+.icon-loading {
+  font-size: 42px;
+}
+
+.form {
+  min-width: 220px;
+  margin: 0 auto;
+}
+
+.button-submit {
+  width: 100%;
+}

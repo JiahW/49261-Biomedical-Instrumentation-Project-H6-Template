@@ -4,6 +4,14 @@
  * @author Xu Lian (xu.lian@uts.edu.au)
  */
 import Server from '../core/server';
+import SignUpActuator from '../actuators/signupactuator';
+import SignInActuator from '../actuators/signinactuator';
+import SignOutActuator from '../actuators/signoutactuator';
+import GetProfileActuator from '../actuators/getprofileactuator';
+import ListSamplesActuator from '../actuators/listsamplesactuator';
+import GetSampleActuator from '../actuators/getsampleactuator';
+import ListReportsActuator from '../actuators/listreportsactuator';
+import GetReportActuator from '../actuators/getreportactuator';
 
 export default class APIServer extends Server {
   static get is() { return 'server-api' }
@@ -22,41 +30,48 @@ export default class APIServer extends Server {
       },
       '/user/sign-up': {
         post: (request, response, next) => {
-          response.send(`Sign Up`)
-        }
+          SignUpActuator(request, response)
+        },
       },
       '/user/sign-in': {
         post: (request, response, next) => {
-          response.send(`Sign In`)
+          SignInActuator(request, response)
         }
       },
       '/user/sign-out': {
         post: (request, response, next) => {
-          response.send(`Sign Out`)
-        }
+          SignOutActuator(request, response)
+        },
       },
       '/user/reset-password': {
         post: (request, response, next) => {
-          response.send(`reset-password`)
-        }
+          response.send(`reset-password not yet implemented`)
+        },
       },
       '/user/profile': {
         get: (request, response, next) => {
-        },
-        post: (request, response, next) => {
-          response.send(``)
+          GetProfileActuator(request, response)
+        }
+      },
+      '/samples': {
+        get: (request, response, next) => {
+          ListSamplesActuator(request, response)
         }
       },
       '/samples/:id': {
         get: (request, response, next) => {
-        },
-        post: (request, response, next) => {
-          response.send(``)
+          GetSampleActuator(request, response)
+        }
+      },
+      '/reports': {
+        get: (request, response, next) => {
+          ListReportsActuator(request, response)
         }
       },
       '/reports/:id': {
         get: (request, response, next) => {
-        }
+          GetReportActuator(request, response)
+        },
       }
     }
   }
