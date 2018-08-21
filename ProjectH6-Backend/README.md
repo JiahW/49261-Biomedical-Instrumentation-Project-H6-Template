@@ -30,7 +30,7 @@ Type Enter and wait until brew has been successfully installed. The duration of 
 Please follow the tutorial from the link below to setup your mongodb.
 
 ```
-https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+https://docs.mongodb.com/manual/administration/install-community/
 ```
 
 **4. Install python to /usr/local**
