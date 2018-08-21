@@ -7,6 +7,17 @@ iPhone and Android phone can be used to display real-time vital biosignals such 
 
 Develop an app using an iPhone or a Android phone for displaying real-time biosignals and identifying a physiological status or a medical condition.
 
+**Components**
+
+This template provides following components
+
+- Mobile App -> ProjectH6
+- Service Backend -> ProjectH6-Backend
+
+Please visit their specified directory for additional details.
+
+**Inquiry**
+
 If you have any question please create a new issue in this repository or [email me](mailto:xu.lian@uts.edu.au) and I will reply as soon as possible.
 
 Happy Coding :heart:
